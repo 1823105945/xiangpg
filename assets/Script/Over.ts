@@ -21,7 +21,7 @@ export default class NewClass extends cc.Component {
 
 
     onLoad () {
-
+        this.label.string='最终得分：'
     }
 
     start () {
