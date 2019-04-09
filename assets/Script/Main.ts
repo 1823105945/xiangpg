@@ -85,18 +85,52 @@ export default class Main extends cc.Component {
         if (locationInNode.x>this.node.width/2){
             this.playerMoveRight();
         } else {
-            console.log('zuoy');
+            this.playerMoveLeft();
         }
+        this.newDiciAction();
+        return true; //这里必须要写 return true
     }
 
     //player向右移动
     playerMoveRight(){
-        var goRight=cc.moveTo(0.2,cc.p(this.node.width/2-this.wallWidth,this.player.getPositionY()))
+        var playerY=this.player.getPositionY();
+        //跳转到右边
+        var goRight=cc.moveTo(0.2,cc.p(this.node.width/2-this.wallWidth,playerY));
+        //点击和player同一边的时候处理
+        var goR1=cc.moveTo(0.1,cc.p(this.node.width/2-this.wallWidth-30,playerY));
+        var goR2=cc.moveTo(0.1,cc.p(this.node.width/2-this.wallWidth,playerY));
+        var sque=cc.sequence(goR1,goR2);
+        //判断player的方向来处理是在左边还是在右边
+        if (this.player.rotationY==180){
+            this.player.runAction(sque);
+        } else {
+            this.player.runAction(goRight);
+        }
+        this.player.rotationY=180;
+
+        //跳转
+        this.player.runAction(goRight);
     }
 
     //player向左移动
     playerMoveLeft(){
+        var playerY=this.player.getPositionY();
+        //跳转到右边
+        var goLift=cc.moveTo(0.2,cc.p(-this.node.width/2+this.wallWidth,playerY));
+        //点击和player同一边的时候处理
+        var goL1=cc.moveTo(0.1,cc.p(-this.node.width/2+this.wallWidth+30,playerY));
+        var goL2=cc.moveTo(0.1,cc.p(-this.node.width/2+this.wallWidth,playerY));
+        var sque=cc.sequence(goL1,goL2);
+        //判断player的方向来处理是在左边还是在右边
+        if (this.player.rotationY==0){
+            this.player.runAction(sque);
+        } else {
+            this.player.runAction(goLift);
+        }
+        this.player.rotationY=0;
 
+        //跳转
+        this.player.runAction(goLift);
     }
 
     // update (dt) {}
