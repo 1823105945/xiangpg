@@ -108,8 +108,6 @@ export default class Main extends cc.Component {
         }
         this.player.rotationY=180;
 
-        //跳转
-        this.player.runAction(goRight);
     }
 
     //player向左移动
@@ -129,8 +127,6 @@ export default class Main extends cc.Component {
         }
         this.player.rotationY=0;
 
-        //跳转
-        this.player.runAction(goLift);
     }
 
     // update (dt) {}

@@ -203,7 +203,7 @@
     "_enabled": true,
     "alignMode": 1,
     "_target": null,
-    "_alignFlags": 18,
+    "_alignFlags": 45,
     "_left": 1,
     "_right": 1,
     "_top": 2,
@@ -606,7 +606,6 @@
     },
     "_enabled": true,
     "label": null,
-    "text": "hello",
     "startButton": {
       "__id__": 9
     }
